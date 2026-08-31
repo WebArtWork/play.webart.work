@@ -1,0 +1,17 @@
+<div class="ranks-page">
+	<h1>Рейтинги</h1>
+
+	<div class="ranks-page__tabs">
+		@for (c of categories; track c) {
+			<button type="button" class="ranks-page__tab" [class.ranks-page__tab--active]="category() === c" (click)="setCategory(c)">
+				{{ c }}
+			</button>
+		}
+	</div>
+
+	<div class="ranks-page__list">
+		@for (e of entries(); track e._id) {
+			<app-ranking-short [entity]="e" />
+		}
+	</div>
+</div>
