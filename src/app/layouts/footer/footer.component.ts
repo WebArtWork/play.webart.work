@@ -49,7 +49,10 @@ export class FooterComponent {
 	}
 
 	private readonly allLinks = computed<FooterLink[]>(() => [
-		{ label: 'Головна', icon: 'home', to: '/' },
+		{ label: 'Бібліотека', icon: 'th-large', to: '/library' },
+		{ label: 'Месенджер', icon: 'comments', to: '/messenger' },
+		{ label: 'Стрічка', icon: 'video', to: '/feed' },
+		{ label: 'Рейтинги', icon: 'chart-bar', to: '/ranks' },
 		{ label: 'Профіль', icon: 'user', to: '/profile' },
 		{
 			label: 'Користувачі',

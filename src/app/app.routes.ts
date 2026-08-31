@@ -25,6 +25,84 @@ export const routes: Routes = [
 					),
 			},
 			{
+				path: 'library',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Бібліотека',
+					},
+				},
+				loadChildren: () =>
+					import('./pages/library/library.routes').then(
+						(m) => m.routes,
+					),
+			},
+			{
+				path: 'world/:worldId',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Світ',
+					},
+				},
+				loadChildren: () =>
+					import('./pages/world/world.routes').then(
+						(m) => m.routes,
+					),
+			},
+			{
+				path: 'game/:gameId',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Гра',
+					},
+				},
+				loadChildren: () =>
+					import('./pages/game/game.routes').then(
+						(m) => m.routes,
+					),
+			},
+			{
+				path: 'messenger',
+				canActivate: [authenticatedGuard, MetaGuard],
+				data: {
+					meta: {
+						title: 'Месенджер',
+					},
+				},
+				loadChildren: () =>
+					import('./pages/messenger/messenger.routes').then(
+						(m) => m.routes,
+					),
+			},
+			{
+				path: 'ranks',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Рейтинги',
+					},
+				},
+				loadChildren: () =>
+					import('./pages/ranks/ranks.routes').then(
+						(m) => m.routes,
+					),
+			},
+			{
+				path: 'feed',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Стрічка',
+					},
+				},
+				loadChildren: () =>
+					import('./pages/feed/feed.routes').then(
+						(m) => m.routes,
+					),
+			},
+			{
 				path: 'sign',
 				canActivate: [guestGuard, MetaGuard],
 				data: {
