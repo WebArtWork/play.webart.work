@@ -1,0 +1,19 @@
+.world-icon {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	text-decoration: none;
+	color: var(--c-text-primary);
+
+	&__cover {
+		width: 2rem;
+		height: 2rem;
+		border-radius: var(--radius-card, 0.5rem);
+		object-fit: cover;
+	}
+
+	&__name {
+		font-size: 0.85rem;
+		font-weight: 600;
+	}
+}

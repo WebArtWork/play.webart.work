@@ -1,0 +1,50 @@
+<section class="game-view">
+	<header class="game-view__header">
+		<img class="game-view__cover" [src]="entity().cover" [alt]="entity().name" />
+
+		<div class="game-view__info">
+			<h1 class="game-view__title">{{ entity().name }}</h1>
+			<p class="game-view__desc">{{ entity().description }}</p>
+
+			<div class="game-view__meta">
+				<span><i class="pi pi-users"></i> {{ entity().followerCount }}</span>
+				<span><i class="pi pi-heart"></i> {{ entity().favoriteCount }}</span>
+			</div>
+
+			<div class="game-view__actions">
+				<button pButton type="button" (click)="play()">
+					<i class="pi pi-play"></i>
+					<span>Грати</span>
+				</button>
+				<button pButton type="button" [outlined]="!isFollowing()" (click)="toggleFollow()">
+					<i class="pi pi-plus-circle"></i>
+					<span>{{ isFollowing() ? 'Ви стежите' : 'Стежити' }}</span>
+				</button>
+				<button pButton type="button" [outlined]="!isFavorite()" (click)="toggleFavorite()">
+					<i class="pi pi-heart"></i>
+					<span>{{ isFavorite() ? 'В обраному' : 'В обране' }}</span>
+				</button>
+			</div>
+		</div>
+	</header>
+
+	@if (entity().media.length) {
+		<div class="game-view__gallery">
+			@for (m of entity().media; track m.url) {
+				@if (m.type === 'image') {
+					<img class="game-view__media" [src]="m.url" alt="" loading="lazy" />
+				} @else {
+					<div class="game-view__media game-view__media--video">
+						<i class="pi pi-video"></i>
+					</div>
+				}
+			}
+		</div>
+	}
+
+	<div class="game-view__rules">
+		<h2>Правила</h2>
+		<p class="game-view__rules-summary">{{ entity().rules.summary }}</p>
+		<p class="game-view__rules-details">{{ entity().rules.details }}</p>
+	</div>
+</section>

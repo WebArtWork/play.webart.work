@@ -1,0 +1,22 @@
+<header class="world-view" [style.backgroundImage]="'url(' + entity().banner + ')'">
+	<div class="world-view__scrim">
+		<h1 class="world-view__title">{{ entity().name }}</h1>
+		<p class="world-view__desc">{{ entity().description }}</p>
+
+		<div class="world-view__meta">
+			<span><i class="pi pi-users"></i> {{ entity().followerCount }} <span translate>followers</span></span>
+			<span><i class="pi pi-heart"></i> {{ entity().favoriteCount }} <span translate>favorites</span></span>
+		</div>
+
+		<div class="world-view__actions">
+			<button pButton type="button" [outlined]="!isFollowing()" (click)="toggleFollow()">
+				<i class="pi pi-plus-circle"></i>
+				<span translate>{{ isFollowing() ? 'Ви стежите' : 'Стежити' }}</span>
+			</button>
+			<button pButton type="button" [outlined]="!isFavorite()" (click)="toggleFavorite()">
+				<i class="pi pi-heart"></i>
+				<span translate>{{ isFavorite() ? 'В обраному' : 'В обране' }}</span>
+			</button>
+		</div>
+	</div>
+</header>

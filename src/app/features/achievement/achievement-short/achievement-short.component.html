@@ -1,0 +1,7 @@
+<div class="achievement-short" [class.achievement-short--locked]="!unlocked()">
+	<i [class]="entity().icon"></i>
+	<div class="achievement-short__body">
+		<div class="achievement-short__name">{{ entity().name }}</div>
+		<div class="achievement-short__desc">{{ entity().description }}</div>
+	</div>
+</div>

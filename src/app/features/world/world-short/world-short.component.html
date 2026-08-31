@@ -1,0 +1,11 @@
+<a class="world-short" [routerLink]="['/world', entity()._id]">
+	<img class="world-short__cover" [src]="entity().cover" [alt]="entity().name" loading="lazy" />
+	<div class="world-short__body">
+		<h3 class="world-short__title">{{ entity().name }}</h3>
+		<p class="world-short__desc">{{ entity().description }}</p>
+		<div class="world-short__meta">
+			<span><i class="pi pi-users"></i> {{ entity().followerCount }}</span>
+			<span><i class="pi pi-heart"></i> {{ entity().favoriteCount }}</span>
+		</div>
+	</div>
+</a>

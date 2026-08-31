@@ -1,0 +1,6 @@
+<a class="ranking-short" [routerLink]="entity().entityType === 'achievement' ? null : link()">
+	<span class="ranking-short__rank">#{{ entity().rank }}</span>
+	<img class="ranking-short__image" [src]="entity().entityImage" [alt]="entity().entityName" loading="lazy" />
+	<span class="ranking-short__name">{{ entity().entityName }}</span>
+	<span class="ranking-short__score">{{ entity().score | number }}</span>
+</a>

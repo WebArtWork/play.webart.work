@@ -1,0 +1,33 @@
+.game-page {
+	display: flex;
+	flex-direction: column;
+	gap: 1.75rem;
+	padding: 1rem 0;
+
+	&__world-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		color: var(--c-text-muted);
+		text-decoration: none;
+		font-size: 0.85rem;
+	}
+
+	&__section h2 {
+		margin: 0 0 0.75rem;
+		font-size: 1.1rem;
+	}
+
+	&__achievements,
+	&__ranking {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	&__grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+		gap: 1rem;
+	}
+}

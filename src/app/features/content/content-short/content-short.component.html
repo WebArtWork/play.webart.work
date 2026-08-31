@@ -1,0 +1,11 @@
+<article class="content-short">
+	<img class="content-short__thumb" [src]="entity().thumbnail" [alt]="entity().title" loading="lazy" />
+	<div class="content-short__body">
+		<span class="content-short__type">{{ entity().type }}</span>
+		<h4 class="content-short__title">{{ entity().title }}</h4>
+		<div class="content-short__meta">
+			<span><i class="pi pi-heart"></i> {{ entity().likeCount }}</span>
+			<span><i class="pi pi-comment"></i> {{ entity().commentCount }}</span>
+		</div>
+	</div>
+</article>

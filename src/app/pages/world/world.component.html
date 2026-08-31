@@ -1,0 +1,49 @@
+@if (world(); as w) {
+	<div class="world-page">
+		<app-world-view [entity]="w" />
+
+		<section class="world-page__section">
+			<h2>Ігри</h2>
+			<div class="world-page__grid">
+				@for (g of games(); track g._id) {
+					<app-game-short [entity]="g" />
+				}
+			</div>
+		</section>
+
+		@if (contentTypes().length) {
+			<section class="world-page__section">
+				<h2>Контент</h2>
+				<div class="world-page__tabs">
+					@for (t of contentTypes(); track t) {
+						<button
+							type="button"
+							class="world-page__tab"
+							[class.world-page__tab--active]="activeType() === t"
+							(click)="setActiveType(t)"
+						>
+							{{ t }}
+						</button>
+					}
+				</div>
+				<div class="world-page__grid">
+					@for (c of activeContent(); track c._id) {
+						<app-content-short [entity]="c" />
+					}
+				</div>
+			</section>
+		}
+
+		<section class="world-page__section">
+			<h2>Обговорення</h2>
+			<a routerLink="/messenger">Перейти в Месенджер →</a>
+		</section>
+
+		<section class="world-page__section">
+			<h2>Поділитися</h2>
+			<app-share-profile [title]="w.name" [description]="w.description" [url]="shareUrl()" />
+		</section>
+	</div>
+} @else {
+	<p>Світ не знайдено</p>
+}

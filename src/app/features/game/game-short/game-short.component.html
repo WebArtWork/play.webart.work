@@ -1,0 +1,11 @@
+<a class="game-short" [routerLink]="['/game', entity()._id]">
+	<img class="game-short__cover" [src]="entity().cover" [alt]="entity().name" loading="lazy" />
+	<div class="game-short__body">
+		<h3 class="game-short__title">{{ entity().name }}</h3>
+		<p class="game-short__desc">{{ entity().description }}</p>
+		<div class="game-short__meta">
+			<span><i class="pi pi-users"></i> {{ entity().followerCount }}</span>
+			<span><i class="pi pi-heart"></i> {{ entity().favoriteCount }}</span>
+		</div>
+	</div>
+</a>

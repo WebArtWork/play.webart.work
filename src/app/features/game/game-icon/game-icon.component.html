@@ -1,0 +1,4 @@
+<a class="game-icon" [routerLink]="['/game', entity()._id]">
+	<img class="game-icon__cover" [src]="entity().cover" [alt]="entity().name" loading="lazy" />
+	<span class="game-icon__name">{{ entity().name }}</span>
+</a>

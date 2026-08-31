@@ -1,0 +1,4 @@
+<a class="world-icon" [routerLink]="['/world', entity()._id]">
+	<img class="world-icon__cover" [src]="entity().cover" [alt]="entity().name" loading="lazy" />
+	<span class="world-icon__name">{{ entity().name }}</span>
+</a>

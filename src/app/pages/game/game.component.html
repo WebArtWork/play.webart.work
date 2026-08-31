@@ -1,0 +1,55 @@
+@if (game(); as g) {
+	<div class="game-page">
+		@if (world(); as w) {
+			<a class="game-page__world-link" [routerLink]="['/world', w._id]">
+				<i class="pi pi-arrow-left"></i>
+				<span>{{ w.name }}</span>
+			</a>
+		}
+
+		<app-game-view [entity]="g" />
+
+		@if (achievements().length) {
+			<section class="game-page__section">
+				<h2>Досягнення</h2>
+				<div class="game-page__achievements">
+					@for (a of achievements(); track a._id) {
+						<app-achievement-short [entity]="a" [unlocked]="isUnlocked(a._id)" />
+					}
+				</div>
+			</section>
+		}
+
+		<section class="game-page__section">
+			<h2>Рейтинг ігор</h2>
+			<div class="game-page__ranking">
+				@for (r of rankings(); track r._id) {
+					<app-ranking-short [entity]="r" />
+				}
+			</div>
+		</section>
+
+		@if (relatedContent().length) {
+			<section class="game-page__section">
+				<h2>Пов'язаний контент</h2>
+				<div class="game-page__grid">
+					@for (c of relatedContent(); track c._id) {
+						<app-content-short [entity]="c" />
+					}
+				</div>
+			</section>
+		}
+
+		<section class="game-page__section">
+			<h2>Обговорення</h2>
+			<a routerLink="/messenger">Перейти в Месенджер →</a>
+		</section>
+
+		<section class="game-page__section">
+			<h2>Поділитися</h2>
+			<app-share-profile [title]="g.name" [description]="g.description" [url]="shareUrl()" />
+		</section>
+	</div>
+} @else {
+	<p>Гру не знайдено</p>
+}
