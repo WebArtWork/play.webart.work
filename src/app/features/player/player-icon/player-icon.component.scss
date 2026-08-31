@@ -1,0 +1,19 @@
+.player-icon {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	text-decoration: none;
+	color: var(--c-text-primary);
+
+	&__avatar {
+		width: 2rem;
+		height: 2rem;
+		border-radius: 50%;
+		object-fit: cover;
+	}
+
+	&__name {
+		font-size: 0.85rem;
+		font-weight: 600;
+	}
+}

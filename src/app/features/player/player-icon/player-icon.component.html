@@ -1,0 +1,4 @@
+<a class="player-icon" [routerLink]="['/profile', entity()._id]">
+	<img class="player-icon__avatar" [src]="entity().avatar" [alt]="entity().name" loading="lazy" />
+	<span class="player-icon__name">{{ entity().name }}</span>
+</a>

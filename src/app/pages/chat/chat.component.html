@@ -1,0 +1,39 @@
+@if (conversation(); as c) {
+	<div class="chat-page">
+		<header class="chat-page__header">
+			<a routerLink="/messenger" class="chat-page__back"><i class="pi pi-arrow-left"></i></a>
+			<div class="chat-page__participants">
+				@for (p of c.participants; track p.playerId) {
+					<a class="chat-page__participant" [routerLink]="['/profile', p.playerId]">
+						<img [src]="p.avatar" [alt]="p.name" />
+						<span>{{ p.name }}</span>
+					</a>
+				}
+			</div>
+		</header>
+
+		<div class="chat-page__messages">
+			@for (m of messages(); track m._id) {
+				<div class="chat-page__message" [class.chat-page__message--mine]="isMine(m.senderId)">
+					<div class="chat-page__bubble">
+						<div class="chat-page__sender">{{ m.senderName }}</div>
+						<div class="chat-page__text">{{ m.text }}</div>
+						<div class="chat-page__meta">
+							<span>{{ m.timestamp | date: 'short' }}</span>
+							@if (isMine(m.senderId)) {
+								<i class="pi" [class.pi-check]="m.state === 'sent'" [class.pi-check-circle]="m.state === 'read'"></i>
+							}
+						</div>
+					</div>
+				</div>
+			}
+		</div>
+
+		<form class="chat-page__input" (submit)="sendMessage(); $event.preventDefault()">
+			<input type="text" placeholder="Написати повідомлення..." [value]="draft()" (input)="onDraftChange($any($event.target).value)" />
+			<button type="submit"><i class="pi pi-send"></i></button>
+		</form>
+	</div>
+} @else {
+	<p>Розмову не знайдено</p>
+}

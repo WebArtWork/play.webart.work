@@ -1,0 +1,61 @@
+.conversation-short {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	padding: 0.6rem 0.75rem;
+	border-bottom: 1px solid var(--c-border);
+	text-decoration: none;
+	color: inherit;
+
+	&__avatar {
+		width: 2.5rem;
+		height: 2.5rem;
+		border-radius: 50%;
+		object-fit: cover;
+		flex-shrink: 0;
+	}
+
+	&__body {
+		flex: 1;
+		min-width: 0;
+	}
+
+	&__top {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.5rem;
+	}
+
+	&__title {
+		margin: 0;
+		font-size: 0.9rem;
+		font-weight: 600;
+		color: var(--c-text-primary);
+	}
+
+	&__kind {
+		font-size: 0.65rem;
+		color: var(--c-text-muted);
+		text-transform: uppercase;
+	}
+
+	&__preview {
+		margin: 0.15rem 0 0;
+		font-size: 0.8rem;
+		color: var(--c-text-muted);
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	&__badge {
+		background: var(--c-primary, #ef4444);
+		color: #fff;
+		font-size: 0.7rem;
+		font-weight: 700;
+		border-radius: 999px;
+		padding: 0.1rem 0.45rem;
+		flex-shrink: 0;
+	}
+}

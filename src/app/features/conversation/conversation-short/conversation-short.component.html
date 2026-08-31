@@ -1,0 +1,13 @@
+<a class="conversation-short" [routerLink]="['/messenger', entity()._id]">
+	<img class="conversation-short__avatar" [src]="entity().participants[0]?.avatar" [alt]="entity().title" loading="lazy" />
+	<div class="conversation-short__body">
+		<div class="conversation-short__top">
+			<h4 class="conversation-short__title">{{ entity().title }}</h4>
+			<span class="conversation-short__kind">{{ entity().kind }}</span>
+		</div>
+		<p class="conversation-short__preview">{{ entity().lastMessagePreview }}</p>
+	</div>
+	@if (entity().unreadCount > 0) {
+		<span class="conversation-short__badge">{{ entity().unreadCount }}</span>
+	}
+</a>

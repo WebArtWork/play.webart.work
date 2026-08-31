@@ -1,0 +1,19 @@
+<div class="messenger-page">
+	<h1>Месенджер</h1>
+
+	<input
+		class="messenger-page__search"
+		type="text"
+		placeholder="Пошук розмов..."
+		[value]="search()"
+		(input)="onSearch($any($event.target).value)"
+	/>
+
+	<div class="messenger-page__list">
+		@for (c of conversations(); track c._id) {
+			<app-conversation-short [entity]="c" />
+		} @empty {
+			<p>Розмов не знайдено</p>
+		}
+	</div>
+</div>

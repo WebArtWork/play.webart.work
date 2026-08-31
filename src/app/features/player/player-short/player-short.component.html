@@ -1,0 +1,7 @@
+<a class="player-short" [routerLink]="['/profile', entity()._id]">
+	<img class="player-short__avatar" [src]="entity().avatar" [alt]="entity().name" loading="lazy" />
+	<div class="player-short__body">
+		<h4 class="player-short__name">{{ entity().name }}</h4>
+		<p class="player-short__bio">{{ entity().bio }}</p>
+	</div>
+</a>
