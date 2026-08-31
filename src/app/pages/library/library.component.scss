@@ -1,0 +1,70 @@
+.library-page {
+	padding: 1rem 0;
+
+	h1 {
+		font-size: 1.3rem;
+		margin: 0 0 1rem;
+	}
+
+	&__controls {
+		display: flex;
+		gap: 0.5rem;
+		margin-bottom: 1rem;
+	}
+
+	&__search {
+		flex: 1;
+		padding: 0.6rem 0.9rem;
+		border: 1px solid var(--c-border);
+		border-radius: var(--radius-btn, 0.5rem);
+		background: var(--c-bg-secondary);
+		color: var(--c-text-primary);
+	}
+
+	&__sort {
+		padding: 0.6rem 0.9rem;
+		border: 1px solid var(--c-border);
+		border-radius: var(--radius-btn, 0.5rem);
+		background: var(--c-bg-secondary);
+		color: var(--c-text-primary);
+	}
+
+	&__tabs {
+		display: flex;
+		gap: 0.5rem;
+		margin-bottom: 1.5rem;
+		flex-wrap: wrap;
+	}
+
+	&__tab {
+		border: 1px solid var(--c-border);
+		background: var(--c-bg-secondary);
+		color: var(--c-text-muted);
+		border-radius: 999px;
+		padding: 0.3rem 0.9rem;
+		font-size: 0.8rem;
+		cursor: pointer;
+		text-transform: capitalize;
+
+		&--active {
+			background: var(--c-primary, #6366f1);
+			color: #fff;
+			border-color: transparent;
+		}
+	}
+
+	&__section {
+		margin-bottom: 1.5rem;
+
+		h2 {
+			font-size: 1rem;
+			margin: 0 0 0.75rem;
+		}
+	}
+
+	&__grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+		gap: 1rem;
+	}
+}

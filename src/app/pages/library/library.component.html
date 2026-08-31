@@ -1,0 +1,52 @@
+<div class="library-page">
+	<h1>Бібліотека</h1>
+
+	<div class="library-page__controls">
+		<input
+			class="library-page__search"
+			type="text"
+			placeholder="Пошук..."
+			[value]="search()"
+			(input)="onSearch($any($event.target).value)"
+		/>
+
+		<select class="library-page__sort" [value]="sortBy()" (change)="setSort($any($event.target).value)">
+			<option value="popularity">За популярністю</option>
+			<option value="name">За назвою</option>
+		</select>
+	</div>
+
+	<div class="library-page__tabs">
+		@for (t of tabs; track t) {
+			<button type="button" class="library-page__tab" [class.library-page__tab--active]="activeTab() === t" (click)="setTab(t)">
+				{{ t }}
+			</button>
+		}
+	</div>
+
+	@if (filteredWorlds().length) {
+		<section class="library-page__section">
+			<h2>Світи</h2>
+			<div class="library-page__grid">
+				@for (w of filteredWorlds(); track w._id) {
+					<app-world-short [entity]="w" />
+				}
+			</div>
+		</section>
+	}
+
+	@if (filteredGames().length) {
+		<section class="library-page__section">
+			<h2>Ігри</h2>
+			<div class="library-page__grid">
+				@for (g of filteredGames(); track g._id) {
+					<app-game-short [entity]="g" />
+				}
+			</div>
+		</section>
+	}
+
+	@if (!filteredWorlds().length && !filteredGames().length) {
+		<p>Нічого не знайдено</p>
+	}
+</div>

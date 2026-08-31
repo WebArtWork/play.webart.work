@@ -1,0 +1,41 @@
+<div class="feed-page">
+	@for (item of items(); track item._id) {
+		<section class="feed-page__item" [style.backgroundImage]="'url(' + item.thumbnail + ')'">
+			<div class="feed-page__scrim">
+				<div class="feed-page__info">
+					<a class="feed-page__creator" [routerLink]="['/profile', item.creator.playerId]">
+						<img [src]="item.creator.avatar" [alt]="item.creator.name" />
+						<span>{{ item.creator.name }}</span>
+					</a>
+					<h3 class="feed-page__title">{{ item.title }}</h3>
+					<p class="feed-page__desc">{{ item.description }}</p>
+					<div class="feed-page__links">
+						@if (item.worldId) {
+							<a [routerLink]="['/world', item.worldId]"><i class="pi pi-globe"></i> Світ</a>
+						}
+						@if (item.gameId) {
+							<a [routerLink]="['/game', item.gameId]"><i class="pi pi-play"></i> Гра</a>
+						}
+					</div>
+				</div>
+
+				<div class="feed-page__actions">
+					<button type="button" (click)="toggleLike(item._id)">
+						<i class="pi" [class.pi-heart]="!isLiked(item._id)" [class.pi-heart-fill]="isLiked(item._id)"></i>
+						<span>{{ item.likeCount }}</span>
+					</button>
+					<button type="button" (click)="toggleFavorite(item.gameId)">
+						<i class="pi" [class.pi-star]="!isFavorite(item.gameId)" [class.pi-star-fill]="isFavorite(item.gameId)"></i>
+					</button>
+					<button type="button" (click)="comment(item._id)">
+						<i class="pi pi-comment"></i>
+						<span>{{ item.commentCount }}</span>
+					</button>
+					<button type="button">
+						<i class="pi pi-share-alt"></i>
+					</button>
+				</div>
+			</div>
+		</section>
+	}
+</div>
