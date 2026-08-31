@@ -1,4 +1,4 @@
-name: Deploy devkit to GitHub Pages
+name: Deploy app to GitHub Pages
 
 on:
     push:
@@ -24,14 +24,14 @@ jobs:
             - name: Rebuild lightningcss
               run: npm rebuild lightningcss
 
-            - name: Build devkit
-              run: npm run build:devkit
+            - name: Build app
+              run: npm run build
 
             - name: Add CNAME file
-              run: echo "ngx-prime-default.webart.work" > dist/devkit/browser/CNAME
+              run: echo "play.webart.work" > dist/app/browser/CNAME
 
             - name: Add SPA fallback for GitHub Pages route reload
-              run: cp dist/devkit/browser/index.html dist/devkit/browser/404.html
+              run: cp dist/app/browser/index.html dist/app/browser/404.html
 
             - name: Set up SSH
               env:
@@ -48,12 +48,12 @@ jobs:
               run: |
                   git config --global user.name "github-actions[bot]"
                   git config --global user.email "github-actions[bot]@users.noreply.github.com"
-                  cd dist/devkit/browser
+                  cd dist/app/browser
                   git init  # Initialize a new git repository
                   git add --all .  # Add all changes
-                  git commit -m "Deploy devkit to GitHub Pages"
+                  git commit -m "Deploy app to GitHub Pages"
                   git checkout -B gh-pages  # Switch to gh-pages branch
-                  git push git@github.com:WebArtWork/ngx-prime-default.webart.work.git gh-pages --force
+                  git push git@github.com:WebArtWork/play.webart.work.git gh-pages --force
 
             - name: Clean up SSH
               run: |
