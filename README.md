@@ -1,17 +1,36 @@
-# Ngx BOS (Angular 22)
+# WAW Play
 
-Source workspace for the Ngx BOS CRM / business operating system, plus a small
-family of supporting Angular apps that live alongside it in the same workspace.
-It contains:
+WAW Play is the discovery and community platform for WAW's games and fictional worlds.
+It is where players find worlds and games, follow the content they care about, play,
+watch short-form video from the WAW universe, compare rankings, talk to other players,
+and manage their player profile. Individual WAW games keep their own gameplay logic —
+WAW Play owns the platform-level relationship between a player and everything WAW makes:
+identity, follows, favorites, achievements, rankings, activity, and communication.
 
-- an **app template** under `src/` — a browser-only SPA built with standalone components, signals-first state, native control flow, and the WAW platform services (`@wawjs/*`). This is the actual product — everything else in this repo exists to support it.
-- the **`@wawjs/ngx-bos` package** under `projects/ngx-bos/` — reusable BOS contracts, services, guards, selectors, pages, and routes extracted from the app
-- a supporting Angular app under `projects/devkit/` — its own standalone/OnPush/signals project with its own `ng serve`/`ng build` target (not part of the deployed product, but part of this workspace), merging what used to be three separate apps into one:
-  - `/` (home) — a fuller example site (dashboards, ecommerce, projects, applications, auth, errors) built entirely from ngx-prime components, showing what a real app assembled from the same component set looks like end to end
-  - `/uikit` — a full ngx-prime component reference and a live theme configurator ("Design Lab") for tuning the app template's design tokens
-  - `/translations` — a small tool for browsing and editing the app template's actual `src/i18n/*.json` translation files
+## Core sections
 
-Business apps own routes, roles, schemas, dashboards, integrations, environment values, and workflow copy under `src/`. Reusable behavior lives in `@wawjs/ngx-bos`. See [AGENTS.md](AGENTS.md) and [documentation/](documentation/) for the source/package split.
+- **Library** — everything a player can browse: games, worlds, owned/joined content,
+  followed content, favorites, recently played, and undiscovered content, with search,
+  filtering, and sorting.
+- **World** — a universe profile page. A world groups games, comics, books, videos,
+  characters, news, and other content types under one identity; players can follow,
+  favorite, and browse it.
+- **Game** — a game profile page. A game belongs to a world but also stands on its own:
+  info, media, rules, play/launch action, player progress, achievements, rankings, and
+  discussion. Gameplay itself lives outside WAW Play; WAW Play tracks the platform-level
+  player↔game relationship.
+- **Messenger / Chat** — the communication center: private and group conversations,
+  community/game/world discussions, comments, and mentions, opening into individual
+  chat threads.
+- **Ranks** — cross-platform leaderboards for games, worlds, players, and achievements,
+  each linking back to the ranked entity's profile.
+- **Profile** — a player's identity on the platform (public and private views), covering
+  achievements, favorites, games, worlds, follows, friends, and activity.
+- **Feed** — a vertical, short-form discovery feed surfacing video and content from
+  across WAW worlds and games.
+
+Library, Messenger, Feed, Ranks, and Profile are the primary navigation destinations;
+World, Game, and Chat are contextual pages opened from them.
 
 ## Prerequisites
 
@@ -44,8 +63,13 @@ through the npm script aliases, e.g. `ng serve devkit` or `ng build devkit`.
 - `src/app/app.config.ts` — root providers (zoneless change detection, `ngxBosProvide`, WAW services, TinyMCE, router)
 - `src/app/app.routes.ts` — route map for guest, user, and admin areas
 - `src/app/app.formcomponents.ts` — project-specific dynamic form components
-- `src/app/layouts/` — layout shells for guest/user routes
-- `src/app/pages/` — routed pages per role (e.g. `guest/sign`, `user/profile`)
+- `src/app/layouts/` — layout shells (topbar, sidebar, footer nav, user shell)
+- `src/app/pages/` — routed pages per section (`library`, `world`, `game`, `messenger`,
+  `chat`, `ranks`, `profile`, `feed`, plus `sign`/`settings`)
+- `src/app/features/` — one folder per domain entity (see [CLAUDE.md](../CLAUDE.md) for
+  the shared `<entity>.interface.ts` / `<entity>.data.ts` / `<entity>-icon` /
+  `<entity>-short` / `<entity>-view` / `<entity>-form` structure), including the shared
+  `share-profile` component reused across profile-like entities
 - `src/environments/` — API / meta / language configuration
 - `src/i18n/en.json` / `src/i18n/ua.json` — interface translations (served at `/i18n`), read by `@wawjs/ngx-translate`. Each file is an array of strings, one per language, positionally aligned — `en.json[i]` is both the English source text and the lookup key used everywhere in `src/app` (e.g. `translateService.translate('Settings')`), and `ua.json[i]` is its translation. `projects/devkit`'s `/translations` route is the tool for browsing/editing these.
 - `projects/ngx-bos/` — the reusable `@wawjs/ngx-bos` package (users/auth, file upload, form adapters, guards, selectors, pages, and routes). See [projects/ngx-bos/README.md](projects/ngx-bos/README.md).
