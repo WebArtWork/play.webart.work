@@ -1,0 +1,16 @@
+<div class="share-profile">
+	<button pButton type="button" [outlined]="true" (click)="copyLink()">
+		<i class="pi" [class.pi-copy]="!copied()" [class.pi-check]="copied()"></i>
+		<span>{{ copied() ? 'Скопійовано' : 'Копіювати посилання' }}</span>
+	</button>
+
+	<button pButton type="button" [outlined]="true" [rounded]="true" (click)="shareTo('telegram')" aria-label="Telegram">
+		<i class="pi pi-telegram"></i>
+	</button>
+	<button pButton type="button" [outlined]="true" [rounded]="true" (click)="shareTo('twitter')" aria-label="Twitter">
+		<i class="pi pi-twitter"></i>
+	</button>
+	<button pButton type="button" [outlined]="true" [rounded]="true" (click)="shareTo('facebook')" aria-label="Facebook">
+		<i class="pi pi-facebook"></i>
+	</button>
+</div>

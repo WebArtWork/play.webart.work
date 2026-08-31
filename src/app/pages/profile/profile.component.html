@@ -1,32 +1,128 @@
 <section class="profile">
-	<div class="profile__card">
-		<ngx-file
-			mode="single-image"
-			view="thumb-only"
-			[wImage]="userService.thumb()"
-			(wImageChange)="updateThumb($event || '')"
-			[container]="'user'"
-			[name]="userService.user()._id + '.jpg'"
-			[accept]="'image/*'"
-			[clearable]="false"
-			[preview]="true"
-			[cropWidth]="512"
-			[cropHeight]="512"
-		></ngx-file>
+	<div class="profile__public">
+		<img class="profile__avatar" [src]="viewedPlayer().avatar" [alt]="viewedPlayer().name" />
+		<div class="profile__identity">
+			<h1 class="profile__name">{{ viewedPlayer().name }}</h1>
+			<p class="profile__bio">{{ viewedPlayer().bio }}</p>
 
-		<form (submit)="wFormSubmit(); $event.preventDefault()" class="profile__form">
-			<input pInputText class="w-full" [placeholder]="translateService.translate('Enter your name...')()" [formField]="profileForm.name" />
-			<input pInputText class="w-full" [placeholder]="translateService.translate('Enter your phone...')()" [formField]="profileForm.phone" type="tel" />
-			<textarea pTextarea class="w-full" [placeholder]="translateService.translate('Enter your bio...')()" [formField]="profileForm.bio"></textarea>
+			@if (!isOwnProfile()) {
+				<button pButton type="button" [outlined]="!isFollowingPlayer()" (click)="toggleFollowPlayer()">
+					<i class="pi pi-plus-circle"></i>
+					<span>{{ isFollowingPlayer() ? 'Ви стежите' : 'Стежити' }}</span>
+				</button>
+			}
 
-			<div class="profile__actions">
-				<button pButton type="submit" [disabled]="isSubmitDisabled()"><span translate>Update</span></button>
+			<div class="profile__share">
+				<app-share-profile [title]="viewedPlayer().name" [description]="viewedPlayer().bio" [url]="shareUrl()" />
 			</div>
-		</form>
+		</div>
 	</div>
 
-	<button type="button" class="profile__logout" (click)="userService.logout()">
-		<i class="pi pi-sign-out"></i>
-		<span translate>Logout</span>
-	</button>
+	@if (achievements().length) {
+		<div class="profile__block">
+			<h2>Досягнення</h2>
+			<div class="profile__achievements">
+				@for (a of achievements(); track a!._id) {
+					<app-achievement-short [entity]="a!" [unlocked]="true" />
+				}
+			</div>
+		</div>
+	}
+
+	@if (favoriteGames().length || favoriteWorlds().length) {
+		<div class="profile__block">
+			<h2>Обране</h2>
+			<div class="profile__grid">
+				@for (g of favoriteGames(); track g!._id) {
+					<app-game-short [entity]="g!" />
+				}
+				@for (w of favoriteWorlds(); track w!._id) {
+					<app-world-short [entity]="w!" />
+				}
+			</div>
+		</div>
+	}
+
+	@if (followedGames().length || followedWorlds().length) {
+		<div class="profile__block">
+			<h2>Стежить за</h2>
+			<div class="profile__grid">
+				@for (g of followedGames(); track g!._id) {
+					<app-game-short [entity]="g!" />
+				}
+				@for (w of followedWorlds(); track w!._id) {
+					<app-world-short [entity]="w!" />
+				}
+			</div>
+		</div>
+	}
+
+	@if (recentlyPlayed().length) {
+		<div class="profile__block">
+			<h2>Нещодавно грав</h2>
+			<div class="profile__grid">
+				@for (g of recentlyPlayed(); track g!._id) {
+					<app-game-short [entity]="g!" />
+				}
+			</div>
+		</div>
+	}
+
+	@if (friends().length) {
+		<div class="profile__block">
+			<h2>Друзі</h2>
+			<div class="profile__friends">
+				@for (f of friends(); track f!._id) {
+					<app-player-short [entity]="f!" />
+				}
+			</div>
+		</div>
+	}
+
+	@if (viewedPlayer().activity.length) {
+		<div class="profile__block">
+			<h2>Активність</h2>
+			<ul class="profile__activity">
+				@for (a of viewedPlayer().activity; track a._id) {
+					<li>{{ a.text }}</li>
+				}
+			</ul>
+		</div>
+	}
+
+	@if (isOwnProfile()) {
+		<div class="profile__block">
+			<h2>Налаштування профілю</h2>
+			<div class="profile__card">
+				<ngx-file
+					mode="single-image"
+					view="thumb-only"
+					[wImage]="userService.thumb()"
+					(wImageChange)="updateThumb($event || '')"
+					[container]="'user'"
+					[name]="userService.user()._id + '.jpg'"
+					[accept]="'image/*'"
+					[clearable]="false"
+					[preview]="true"
+					[cropWidth]="512"
+					[cropHeight]="512"
+				></ngx-file>
+
+				<form (submit)="wFormSubmit(); $event.preventDefault()" class="profile__form">
+					<input pInputText class="w-full" [placeholder]="translateService.translate('Enter your name...')()" [formField]="profileForm.name" />
+					<input pInputText class="w-full" [placeholder]="translateService.translate('Enter your phone...')()" [formField]="profileForm.phone" type="tel" />
+					<textarea pTextarea class="w-full" [placeholder]="translateService.translate('Enter your bio...')()" [formField]="profileForm.bio"></textarea>
+
+					<div class="profile__actions">
+						<button pButton type="submit" [disabled]="isSubmitDisabled()"><span translate>Update</span></button>
+					</div>
+				</form>
+			</div>
+
+			<button type="button" class="profile__logout" (click)="userService.logout()">
+				<i class="pi pi-sign-out"></i>
+				<span translate>Logout</span>
+			</button>
+		</div>
+	}
 </section>

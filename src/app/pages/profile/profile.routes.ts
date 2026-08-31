@@ -3,7 +3,10 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
 	{
 		path: '',
-		loadComponent: () =>
-			import('./profile.component').then((m) => m.ProfileComponent),
+		loadComponent: () => import('./profile.component').then((m) => m.ProfileComponent),
+	},
+	{
+		path: ':playerId',
+		loadComponent: () => import('./profile.component').then((m) => m.ProfileComponent),
 	},
 ];
