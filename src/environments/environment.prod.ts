@@ -2,15 +2,15 @@ export const environment = {
 	roles: [],
 	production: true,
 	appId: 'appId',
-	url: 'https://it.webart.work',
+	url: 'https://play.webart.work',
 	sign: {
-		logo: '',
+		logo: '/logo.png',
 		email: '',
 		password: '',
 	},
 	image: {
-		default: 'https://ngx.webart.work/logo.png',
-		logo: 'https://ngx.webart.work/logo.png',
+		default: 'https://play.webart.work/logo.png',
+		logo: 'https://play.webart.work/logo.png',
 	},
 	defaultLanguageCode: 'ua',
 	/** Ukrainian first, English second, then the rest by European speaker population (descending) \u2014 matches devkit's translator list order. */

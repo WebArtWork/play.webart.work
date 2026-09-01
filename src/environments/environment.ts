@@ -5,7 +5,7 @@ export const environment = {
 	...environmentProd,
 	url: '',
 	sign: {
-		logo: '',
+		logo: '/logo.png',
 		email: 'ceo@webart.work',
 		password: 'asdasdasdasd',
 	},
