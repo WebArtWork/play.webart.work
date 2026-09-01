@@ -20,7 +20,27 @@ import { provideNgxSocket } from '@wawjs/ngx-socket';
 import { provideNgxTinymce } from '@wawjs/ngx-tinymce';
 import { provideTranslate } from '@wawjs/ngx-translate';
 import { provideNgxPrime } from '@wawjs/ngx-prime/config';
+import { definePreset } from '@wawjs/css-prime-styled';
 import Aura from '@wawjs/css-prime-themes/aura';
+
+/** WAW Play brand neon lime, matched to the logo's play-triangle color. */
+const PlayPreset = definePreset(Aura, {
+	semantic: {
+		primary: {
+			50: '#fafce8',
+			100: '#f2f7c2',
+			200: '#e6ef8a',
+			300: '#d6e34c',
+			400: '#c6d61f',
+			500: '#a8b815',
+			600: '#859011',
+			700: '#687112',
+			800: '#565c15',
+			900: '#4a4e17',
+			950: '#282a0a',
+		},
+	},
+});
 import { NgxBosConfig, ngxBosProvide } from '@wawjs/ngx-bos';
 import { io } from 'socket.io-client';
 import { environment } from '@env';
@@ -73,7 +93,7 @@ export const appConfig: ApplicationConfig = {
 		}),
 		provideNgxPrime({
 			theme: {
-				preset: Aura,
+				preset: PlayPreset,
 				options: { darkModeSelector: "[data-mode='dark']" },
 			},
 		}),

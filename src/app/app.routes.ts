@@ -139,6 +139,76 @@ export const routes: Routes = [
 						(m) => m.routes,
 					),
 			},
+			{
+				path: 'feedback',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Зворотний зв\'язок',
+					},
+				},
+				loadChildren: () =>
+					import('./pages/feedback/feedback.routes').then(
+						(m) => m.routes,
+					),
+			},
+			{
+				path: 'for-players',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Для гравців',
+					},
+				},
+				loadChildren: () =>
+					import('./pages/for-players/for-players.routes').then(
+						(m) => m.routes,
+					),
+			},
+			{
+				path: 'for-creators',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Для творців',
+					},
+				},
+				loadChildren: () =>
+					import('./pages/for-creators/for-creators.routes').then(
+						(m) => m.routes,
+					),
+			},
+			{
+				path: 'share-profile',
+				canActivate: [MetaGuard],
+				data: {
+					shareKind: 'profile',
+					meta: {
+						title: 'Поділитися профілем',
+						description: 'Відскануйте QR-код, щоб відкрити мій профіль WAW Play.',
+						index: false,
+					},
+				},
+				loadChildren: () =>
+					import('./pages/share/share.routes').then(
+						(m) => m.routes,
+					),
+			},
+			{
+				path: 'share',
+				canActivate: [MetaGuard],
+				data: {
+					shareKind: 'app',
+					meta: {
+						title: 'Поділитися WAW Play',
+						description: 'Відскануйте QR-код, щоб приєднатися до WAW Play за кілька секунд.',
+					},
+				},
+				loadChildren: () =>
+					import('./pages/share/share.routes').then(
+						(m) => m.routes,
+					),
+			},
 		],
 	},
 	{

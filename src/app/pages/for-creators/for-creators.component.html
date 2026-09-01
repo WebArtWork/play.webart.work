@@ -1,0 +1,42 @@
+@if (showForm()) {
+	<div class="landing-page">
+		<header class="landing-page__hero">
+			<h1>{{ translateService.translate('Приєднатися до WAW Play')() }}</h1>
+		</header>
+		<app-lead-form kind="creator" [submitLabel]="translateService.translate('Надіслати заявку')()" />
+	</div>
+} @else {
+	<div class="landing-page">
+		<header class="landing-page__hero">
+			<h1>{{ translateService.translate('Публікуй свій світ. Будуй спільноту.')() }}</h1>
+			<p>{{ translateService.translate('WAW Play дає творцям місце для публікації ігор, світів, коміксів, книг і медіа та керування оновленнями й спільнотою навколо своєї творчості.')() }}</p>
+			<button pButton type="button" (click)="showForm.set(true)">{{ translateService.translate('Стати творцем')() }}</button>
+		</header>
+		<section class="landing-page__section">
+			<h2>{{ translateService.translate('Як це працює')() }}</h2>
+			<ul class="landing-page__list">
+				<li>{{ translateService.translate('Публікуй ігри, світи, комікси, книги та медіа під єдиною сторінкою')() }}</li>
+				<li>{{ translateService.translate('Керуй оновленнями та новинами, щоб гравці завжди були в курсі')() }}</li>
+				<li>{{ translateService.translate('Будуй спільноту навколо свого світу чи гри через обговорення й коментарі')() }}</li>
+			</ul>
+		</section>
+		<section class="landing-page__section">
+			<h2>{{ translateService.translate('Чому WAW Play')() }}</h2>
+			<p>{{ translateService.translate('Одна платформа поєднує публікацію контенту, керування спільнотою та зв\'язок із гравцями, які стежать за вашою творчістю.')() }}</p>
+		</section>
+		<section class="landing-page__section">
+			<h2>{{ translateService.translate('Питання')() }}</h2>
+			<p-accordion [multiple]="true">
+				@for (item of faq; track item.question) {
+					<p-accordionpanel [value]="item.question">
+						<p-accordionheader>{{ translateService.translate(item.question)() }}</p-accordionheader>
+						<p-accordioncontent>{{ translateService.translate(item.answer)() }}</p-accordioncontent>
+					</p-accordionpanel>
+				}
+			</p-accordion>
+		</section>
+		<footer class="landing-page__cta">
+			<button pButton type="button" (click)="showForm.set(true)">{{ translateService.translate('Стати творцем')() }}</button>
+		</footer>
+	</div>
+}
