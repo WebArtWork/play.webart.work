@@ -1,0 +1,1 @@
+var t=[{path:``,loadComponent:()=>import(`./chunk-TBMdirWr.js`).then(o=>o.LibraryComponent)}];export{t as routes};

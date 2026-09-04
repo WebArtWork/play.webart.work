@@ -1,0 +1,1 @@
+var t=[{path:``,loadComponent:()=>import(`./chunk-BMT-oSUM2.js`).then(o=>o.GameComponent)}];export{t as routes};

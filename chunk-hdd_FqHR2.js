@@ -1,0 +1,1 @@
+var t=[{path:``,loadComponent:()=>import(`./chunk-kGEdHYfX2.js`).then(o=>o.WorldComponent)}];export{t as routes};

@@ -1,0 +1,1 @@
+var t=[{path:``,loadComponent:()=>import(`./chunk-qusf-Nj2.js`).then(o=>o.ProfileComponent)},{path:`:playerId`,loadComponent:()=>import(`./chunk-qusf-Nj2.js`).then(o=>o.ProfileComponent)}];export{t as routes};

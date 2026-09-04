@@ -1,0 +1,1 @@
+var t=[{path:``,loadComponent:()=>import(`./chunk-DP7mvngx.js`).then(o=>o.RanksComponent)}];export{t as routes};

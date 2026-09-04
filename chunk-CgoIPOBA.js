@@ -1,0 +1,1 @@
+var t=[{path:``,loadComponent:()=>import(`./chunk-DB9Xe-vg2.js`).then(o=>o.ForCreatorsPageComponent)}];export{t as routes};

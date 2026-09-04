@@ -1,0 +1,1 @@
+var t=[{path:``,loadComponent:()=>import(`./chunk-7lE8xCBb.js`).then(o=>o.MessengerComponent)},{path:`:conversationId`,loadComponent:()=>import(`./chunk-Q-BOZHuO2.js`).then(o=>o.ChatComponent)}];export{t as routes};

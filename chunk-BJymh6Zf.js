@@ -1,0 +1,1 @@
+var t=[{path:``,loadComponent:()=>import(`./chunk-DUEonvb42.js`).then(o=>o.FeedbackComponent)}];export{t as routes};
