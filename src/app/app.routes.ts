@@ -25,6 +25,45 @@ export const routes: Routes = [
 					),
 			},
 			{
+				path: 'games',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Ігри',
+					},
+				},
+				loadChildren: () =>
+					import('./pages/games/games.routes').then(
+						(m) => m.routes,
+					),
+			},
+			{
+				path: 'players',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Гравці',
+					},
+				},
+				loadChildren: () =>
+					import('./pages/players/players.routes').then(
+						(m) => m.routes,
+					),
+			},
+			{
+				path: 'tournaments',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Турніри',
+					},
+				},
+				loadChildren: () =>
+					import('./pages/tournaments/tournaments.routes').then(
+						(m) => m.routes,
+					),
+			},
+			{
 				path: 'library',
 				canActivate: [MetaGuard],
 				data: {

@@ -1,0 +1,14 @@
+<div class="players-page">
+	<h1>Гравці</h1>
+	<p class="players-page__intro">Профілі гравців спільноти — досягнення, історія матчів та улюблені ігри.</p>
+
+	@if (players().length) {
+		<div class="players-page__grid">
+			@for (p of players(); track p._id) {
+				<app-player-short [entity]="p" />
+			}
+		</div>
+	} @else {
+		<p class="players-page__empty">Гравців поки немає.</p>
+	}
+</div>

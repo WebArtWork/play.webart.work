@@ -21,6 +21,42 @@
 			}
 		</li>
 
+		<li class="inline-flex items-center max-md:flex-1 max-md:justify-center">
+			<app-nav-icon
+				routerLink="/games"
+				[name]="translateService.translate('Ігри')()"
+				[ariaLabel]="translateService.translate('Ігри')()"
+				icon="th-large"
+			/>
+		</li>
+
+		<li class="inline-flex items-center max-md:flex-1 max-md:justify-center">
+			<app-nav-icon
+				routerLink="/players"
+				[name]="translateService.translate('Гравці')()"
+				[ariaLabel]="translateService.translate('Гравці')()"
+				icon="users"
+			/>
+		</li>
+
+		<li class="inline-flex items-center max-md:flex-1 max-md:justify-center">
+			<app-nav-icon
+				routerLink="/tournaments"
+				[name]="translateService.translate('Турніри')()"
+				[ariaLabel]="translateService.translate('Турніри')()"
+				icon="trophy"
+			/>
+		</li>
+
+		<li class="inline-flex items-center max-md:flex-1 max-md:justify-center">
+			<app-nav-icon
+				routerLink="/feed"
+				[name]="translateService.translate('Стрічка')()"
+				[ariaLabel]="translateService.translate('Стрічка')()"
+				icon="images"
+			/>
+		</li>
+
 		<li class="mx-auto max-md:hidden"></li>
 
 		@if (sidebarToggler()) {
