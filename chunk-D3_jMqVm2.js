@@ -1,0 +1,1 @@
+var t=[{path:``,loadComponent:()=>import(`./chunk-CmH2TIfa2.js`).then(o=>o.GameComponent)}];export{t as routes};

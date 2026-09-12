@@ -1,0 +1,1 @@
+var t=[{path:``,loadComponent:()=>import(`./chunk-DoQM4l-c2.js`).then(o=>o.TournamentsComponent)}];export{t as routes};

@@ -1,0 +1,1 @@
+var t=[{path:``,loadComponent:()=>import(`./chunk-DUOgX2w72.js`).then(o=>o.LibraryComponent)}];export{t as routes};

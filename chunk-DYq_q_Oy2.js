@@ -1,0 +1,1 @@
+var t=[{path:``,loadComponent:()=>import(`./chunk-MFRp-8Y9.js`).then(o=>o.ForCreatorsPageComponent)}];export{t as routes};

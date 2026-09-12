@@ -1,0 +1,1 @@
+var t=[{path:``,loadComponent:()=>import(`./chunk-UwrG5tpL.js`).then(o=>o.WorldComponent)}];export{t as routes};

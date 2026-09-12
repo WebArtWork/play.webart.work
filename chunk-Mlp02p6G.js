@@ -1,0 +1,1 @@
+var t=[{path:``,loadComponent:()=>import(`./chunk-6oPN6RyN2.js`).then(o=>o.ProfileComponent)},{path:`:playerId`,loadComponent:()=>import(`./chunk-6oPN6RyN2.js`).then(o=>o.ProfileComponent)}];export{t as routes};

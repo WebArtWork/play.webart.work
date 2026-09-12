@@ -1,0 +1,1 @@
+var t=[{path:``,loadComponent:()=>import(`./chunk-DdlPfANx2.js`).then(o=>o.ForPlayersPageComponent)}];export{t as routes};
